@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.salausmart"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 description = "mcp server for Bookme app"
 
 java {

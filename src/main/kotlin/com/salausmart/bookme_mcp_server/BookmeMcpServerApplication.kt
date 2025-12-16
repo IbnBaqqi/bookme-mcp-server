@@ -1,5 +1,6 @@
 package com.salausmart.bookme_mcp_server
 
+import org.springframework.beans.factory.getBean
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -7,5 +8,8 @@ import org.springframework.boot.runApplication
 class BookmeMcpServerApplication
 
 fun main(args: Array<String>) {
-	runApplication<BookmeMcpServerApplication>(*args)
+	val context = runApplication<BookmeMcpServerApplication>(*args)
+
+//	val response = context.getBean<BookmeClient>().bookRoom(1, "2025-12-17T16:00:00", "2025-12-17T16:30:00")
+//	println(response)
 }
