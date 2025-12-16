@@ -10,6 +10,6 @@ class BookmeMcpServerApplication
 fun main(args: Array<String>) {
 	val context = runApplication<BookmeMcpServerApplication>(*args)
 
-//	val response = context.getBean<BookmeClient>().bookRoom(1, "2025-12-17T16:00:00", "2025-12-17T16:30:00")
+//	val response = context.getBean<BookingTools>().bookingRoom(1, "2025-12-17T20:00:00", "2025-12-17T20:30:00")
 //	println(response)
 }

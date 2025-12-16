@@ -11,6 +11,8 @@ spring:
       server:
         name: bookme-mcp-server
         version: 0.0.1
+        enabled: true
+        type: sync
 server:
   port: 8081
 #logging:
