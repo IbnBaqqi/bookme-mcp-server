@@ -1,3 +1,7 @@
 spring:
   application:
     name: bookme-mcp-server
+  config:
+    import: file:.env
+url:
+  bookme-backend-url: ${BOOKME-BACKEND-URL}
