@@ -9,6 +9,9 @@ import org.springframework.web.client.body
 import java.time.LocalDateTime
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import org.springframework.core.ParameterizedTypeReference
+import java.lang.reflect.ParameterizedType
+import java.time.LocalDate
 
 @Service
 class BookingTools(
@@ -30,6 +33,18 @@ class BookingTools(
         val createdBy: User?
     ) {
         data class User(
+            val id: Long?,
+            val name: String?
+        )
+    }
+
+    data class Reserved(
+        val id: Long,
+        val startTime: LocalDateTime,
+        val endTime: LocalDateTime,
+        val createdBy: Slot?
+    ) {
+        data class Slot(
             val id: Long?,
             val name: String?
         )
@@ -85,7 +100,22 @@ class BookingTools(
     }
 
 
-    fun unavailableSlots() {
+    @Tool(description = "To get the unavailable slot in a day or within days interval")
+    fun unavailableSlots(
+        @ToolParam start : LocalDate,
+        @ToolParam end: LocalDate
+    ) :String? {
+        val requestBody = mapOf(
+            "startTime" to start,
+            "endTime" to end)
 
+        val response = client.get()
+            .uri("/reservation?start={start}&end={end}", start, end)
+            .header("Authorization", authToken)
+            .retrieve()
+            .body(object: ParameterizedTypeReference<Reserved>)
+
+
+        return null;
     }
 }
